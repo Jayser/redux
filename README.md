@@ -90,8 +90,8 @@ $ yarn install
 * rebase - A merge some changes
 * cherry-pick -  A cherry-pick some changes
 
-> Commit msg should match: <type>: <subject>
-> example: docs: some docs msg
+> Commit msg should match: "<type>: <subject>"
+> example: "docs: some docs msg"
 
 <details>
 ```sh
