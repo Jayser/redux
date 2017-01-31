@@ -111,7 +111,9 @@ $ yarn install
 </details>
 
 ### Example
-<type>: <subject> => "docs: some docs msg"
+* "docs: some docs msg"
+* "feat: some feat msg"
+* "build: some build msg"
 
 ## Style Guide
 Coming soon
