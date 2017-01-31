@@ -2,7 +2,7 @@
 
 A boilerplate using the power and simplicity of React, Redux, Webpack 2 + HMR, and ES6 + JSX via Babel. Includes `Webpack's Tree Shaking` configuration. It's suitable for scalable applications and organized using the custom variation of [the Ducks pattern](https://github.com/nicksp/ducks-modular-redux) — approach when each module's entry file (`feature-name.js`) contains all of its related constants, actions/action creators, selectors and its reducer.
 
-<Details>
+<The provided boilerplate is powered by the following technology stack:>
 The provided boilerplate is powered by the following technology stack:
 
 - [x] [Yarn](https://yarnpkg.com) — package manager and task runner
@@ -30,7 +30,7 @@ The provided boilerplate is powered by the following technology stack:
 - [ ] [Enzyme](http://airbnb.io/enzyme/) — makes unit testing React components an absolute pleasure
 - [ ] [Chai](http://chaijs.com/) — BDD assertion library that works along with `Mocha`
 - [ ] [Sentry](https://sentry.io/) — real-time error tracking for your app
-</details>
+</The provided boilerplate is powered by the following technology stack:>
 
 ## Getting Started
 
@@ -90,9 +90,6 @@ $ yarn install
 * rebase - A merge some changes
 * cherry-pick -  A cherry-pick some changes
 
-- Commit msg should match: "<type>: <subject>"
-- example: "docs: some docs msg"
-
 <details>
 ```sh
 {
@@ -112,6 +109,10 @@ $ yarn install
 }
 ```
 </details>
+
+### Example
+- Commit msg should match: "<type>: <subject>"
+- example: "docs: some docs msg"
 
 ## Style Guide
 Coming soon
