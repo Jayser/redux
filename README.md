@@ -7,12 +7,11 @@ The provided boilerplate is powered by the following technology stack:
 
 - [x] [Yarn](https://yarnpkg.com) — package manager and task runner
 - [x] [Webpack 2](https://gist.github.com/sokra/27b24881210b56bbaff7)
-    - [x] [webpack Dev Middleware](https://github.com/webpack/webpack-dev-middleware) — client-side module builder and module loader
-    - [x] [Case Sensitive Paths - Webpack Plugin](https://github.com/Urthen/case-sensitive-paths-webpack-plugin) — This Webpack plugin enforces the entire path of all required modules
+- [x] [webpack Dev Middleware](https://github.com/webpack/webpack-dev-middleware) — client-side module builder and module loader
+- [x] [Case Sensitive Paths - Webpack Plugin](https://github.com/Urthen/case-sensitive-paths-webpack-plugin) — This Webpack plugin enforces the entire path of all required modules
 - [x] [Babel 6](http://babeljs.io/) — transpiler from ES6 / JSX to ES5
 - [x] [husky](https://github.com/typicode/husky) - Husky can prevent bad commit, push and more! 
-    - [x] [validate-commit-msg](https://github.com/kentcdodds/validate-commit-msg) - This provides you a binary that you can use as a githook to validate the commit message.
-
+- [x] [validate-commit-msg](https://github.com/kentcdodds/validate-commit-msg) - This provides you a binary that you can use as a githook to validate the commit message.
 - [x] [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) — a virtual DOM JavaScript library for rendering UI.  It's about rendering view as a function of state, making JavaScript-driven UI declarative the way HTML is declarative.
 - [x] [Redux](http://redux.js.org/) — an incredibly simple way of modelling your data app state, with great community support
 - [x] [React Hot Loader 3](https://github.com/gaearon/react-hot-boilerplate/pull/61) — combines the best of React Hot Loader and React Transform and fixes some [long-standing issues](https://twitter.com/dan_abramov/status/722040946075045888)
@@ -22,12 +21,10 @@ The provided boilerplate is powered by the following technology stack:
 - [ ] [Redux DevTools](https://github.com/gaearon/redux-devtools) — a live-editing environment for your Redux apps (and as a [browser extension](https://github.com/zalmoxisus/redux-devtools-extension))
 - [x] [ESLint](http://eslint.org/docs/user-guide/configuring) — reporter for syntax and style issues
 - [x] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs. The flow type annotations get ripped out of the source by the webpack build step. You have no obligation to use flow within your code and can even uninstall the dependency (`flow-bin`) without breaking the project.
-
 - [x] [PostCSS](http://postcss.org/) — ecosystem of custom plugins like [Autoprefixer](https://github.com/postcss/autoprefixer) and tools aimed at transforming extended syntaxes and features into modern, browser-friendly CSS
 - [x] [CSS Modules](https://github.com/css-modules/css-modules) — guarantee that all the styles for a single component, designed to fix the problem of the global scope in CSS
 - [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) & [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype) — additional React/Flow type specific linting rules for ESLint
 - [x] [Sass](http://sass-lang.com/) — compiler of CSS styles with variables, mixins, and more
-
 - [ ] [Mocha](https://mochajs.org/) — well-known and flexible test framework that you can use to run your JavaScript tests on the server or in the browser
 - [ ] [Enzyme](http://airbnb.io/enzyme/) — makes unit testing React components an absolute pleasure
 - [ ] [Chai](http://chaijs.com/) — BDD assertion library that works along with `Mocha`
@@ -141,6 +138,7 @@ The approach above supports hot reloading, which is great for development. Howev
 * [Sarhan Azizov](https://github.com/Jayser/)
 
 ## Contributors
+* [Alex Podobed](https://github.com/AlexPodobed)
 
 ## License
 MIT - do anything with the code, but don't blame me if it does not work.

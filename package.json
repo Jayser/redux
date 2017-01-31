@@ -69,5 +69,8 @@
       "pre-commit": "",
       "commit-msg": "validate-commit-msg"
     }
+  },
+  "engines": {
+    "node": ">=7.4.0"
   }
 }
