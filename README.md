@@ -110,6 +110,9 @@ $ yarn install
 ```
 </details>
 
+### Example
+<type>: <subject> => "docs: some docs msg"
+
 ## Style Guide
 Coming soon
 
