@@ -14,12 +14,12 @@ module.exports = {
     module: {
         rules: [
             // ESLint
-            {
+            /*{
                 test: /\.js$/,
                 exclude: /node_modules/,
                 enforce: 'pre',
                 use: 'eslint-loader',
-            },
+            },*/
             // JavaScript / ES6
             {
                 test: /\.js$/,
@@ -48,6 +48,7 @@ module.exports = {
     },
     plugins: [
         new CaseSensitivePathsPlugin(),
+        new webpack.DefinePlugin(config.plugins.definePlugin),
         new HtmlWebpackPlugin(config.plugins.htmlWebpackPlugin),
         new webpack.LoaderOptionsPlugin(config.plugins.loaderOptionsPlugin)
     ],

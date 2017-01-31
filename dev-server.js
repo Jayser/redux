@@ -1,4 +1,6 @@
-const path = require('path');
+const { join } = require('path');
+const url = require('url');
+const http = require('http');
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -18,6 +20,18 @@ function log() {
 app.use(webpackDevMiddleware(compiler, config.devServer));
 
 app.use(webpackHotMiddleware(compiler));
+
+// Important part. Send down index.html for all requests
+app.use('*', (req, res) => {
+    // https://github.com/ReactTraining/react-router/issues/676#issuecomment-73963306
+    const opts = url.parse(config.devServer.publicPath);
+    const myReq = http.request(opts, (myRes) => {
+        res.writeHead(myRes.statusCode, myRes.headers);
+        myRes.pipe(res);
+    });
+
+    myReq.end();
+});
 
 app.listen(config.env.PORT, config.env.HOST, (err) => {
     if (err) {

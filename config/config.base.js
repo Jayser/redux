@@ -3,23 +3,23 @@ const { resolve, normalize } = require('path');
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 8000;
 const env = process.env.NODE_ENV || 'development';
-const isProduction = env === 'production';
+const PRODUCTION = env === 'production';
 const root = resolve(__dirname, '../');
 
-const publicPath = isProduction ? './' : `http://${ host }:${ port }/`;
+const publicPath = PRODUCTION ? './' : `http://${ host }:${ port }/`;
 
 function addHash(path, opt) {
     const hash = opt && opt.chunkHash ? 'chunkhash' : 'hash';
-    return path + (isProduction ? `?[${hash}]` : '');
+    return path + (PRODUCTION ? `?[${hash}]` : '');
 }
 
 module.exports = {
     paths: {
         context: normalize(`${root}/src`),
         entry: {
-            app: './app.js',
+            app: './index.js',
             vendor: [
-                'normalize.css',
+                'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
                 'babel-polyfill',
                 'es6-promise',
                 'react-dom',
@@ -46,20 +46,30 @@ module.exports = {
             {
                 loader: 'css-loader',
                 query: {
-                    minimize: isProduction,
-                    sourceMap: !isProduction,
-                    localIdentName: isProduction ? '[path][name]__[local]-[hash:6]' : '[path][name]__[local]',
+                    importLoaders: 1,
+                    minimize: PRODUCTION,
+                    sourceMap: !PRODUCTION,
+                    localIdentName: PRODUCTION ? '[path][name]__[local]-[hash:6]' : '[path][name]__[local]',
                     modules: true
                 }
             },
             'postcss-loader',
-            'sass-loader?sourceMap',
+            'resolve-url-loader',
+            'sass-loader?sourceMap'
+        ],
+        vendorStylesheets: [
+            'style-loader',
+            'css-loader',
+            'postcss-loader',
+            'resolve-url-loader',
+            'sass-loader?sourceMap'
         ]
     },
     plugins: {
         htmlWebpackPlugin: {
+            favicon: 'favicon.ico',
             template: './index.html',
-            minify: isProduction ? {
+            minify: PRODUCTION ? {
                     collapseWhitespace: true,
                     removeAttributeQuotes: true,
                     removeComments: true,
@@ -86,21 +96,27 @@ module.exports = {
                 comments: false,
             },
         },
+        definePlugin: {
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        },
         loaderOptionsPlugin: {
-            minimize: isProduction,
+            test: /\.scss$/,
+            debug: true,
+            minimize: PRODUCTION,
             options: {
-                postcss: normalize(`${root}/config/config.postcss.js`),
-                eslint: { configFile: normalize(`${root}/config/.eslintrc`) },
-                babel: { extends: normalize(`${root}/config/.babelrc`) },
+                postcss: [
+                    require('autoprefixer')({ browsers: ['last 2 versions'] })
+                ],
                 context: normalize(`${root}/src`),
+                output: { path: publicPath }
             }
         }
     },
     devServer: {
         historyApiFallback: true,
-        compress: isProduction,
-        inline: !isProduction,
-        hot: !isProduction,
+        compress: PRODUCTION,
+        inline: !PRODUCTION,
+        hot: !PRODUCTION,
         publicPath,
         stats: {
             chunks: false,
@@ -108,7 +124,7 @@ module.exports = {
             colors: true
         }
     },
-    devtool: isProduction ? 'eval' : 'source-map',
+    devtool: PRODUCTION ? 'eval' : 'source-map',
     env: {
         HOST: host,
         PORT: port,

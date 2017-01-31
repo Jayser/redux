@@ -18,7 +18,7 @@ The provided boilerplate is powered by the following technology stack:
 - [x] [React Router v3](https://github.com/reactjs/react-router/blob/next/CHANGES.md) — to allow [dynamic routing](https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md)
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux) — simple bindings to keep React Router and Redux in sync
 - [ ] [Reselect](https://github.com/reactjs/reselect) — provides a way to access Redux state in components and build composable selectors that are automatically memoized
-- [ ] [Redux DevTools](https://github.com/gaearon/redux-devtools) — a live-editing environment for your Redux apps (and as a [browser extension](https://github.com/zalmoxisus/redux-devtools-extension))
+- [x] [Redux DevTools](https://github.com/gaearon/redux-devtools) — a live-editing environment for your Redux apps (and as a [browser extension](https://github.com/zalmoxisus/redux-devtools-extension))
 - [x] [ESLint](http://eslint.org/docs/user-guide/configuring) — reporter for syntax and style issues
 - [x] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs. The flow type annotations get ripped out of the source by the webpack build step. You have no obligation to use flow within your code and can even uninstall the dependency (`flow-bin`) without breaking the project.
 - [x] [PostCSS](http://postcss.org/) — ecosystem of custom plugins like [Autoprefixer](https://github.com/postcss/autoprefixer) and tools aimed at transforming extended syntaxes and features into modern, browser-friendly CSS
@@ -116,7 +116,7 @@ $ yarn install
 * "build: some build msg"
 
 ## Style Guide
-Coming soon
+* [git-flow](https://github.com/petervanderdoes/gitflow-avh)
 
 ## Debugging
 
@@ -172,3 +172,4 @@ Will be remove
 * https://github.com/sunstorymvp/playground
 * https://github.com/Jayser/angularjs
 * https://github.com/Jayser/reactjs-tz
+* https://github.com/sergey-trotsyuk/test-task-ed

@@ -1,5 +1,6 @@
 // Child Webpack configuration extended by webpack.config.base
 
+const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
@@ -11,7 +12,13 @@ module.exports = webpackMerge(webpackConfigBase, {
         rules: [
             {
                 test: /\.(scss|css)$/,
+                include: /src/,
                 use: config.rules.stylesheets,
+            },
+            {
+                test: /\.(scss|css)$/,
+                include: /node_modules/,
+                use: config.rules.vendorStylesheets,
             }
         ]
     },
