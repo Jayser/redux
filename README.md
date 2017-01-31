@@ -63,23 +63,17 @@ $ yarn install
         * This will create `reports/webpack-stats.json` file for [analyse](https://webpack.github.io/analyse/) webpack service
 
 ## Production
-    * `npm run build:prod`
-    * This will build production version and put in the build folder
+* `npm run build`
+* This will build production version and put in the build folder
 
 ## Git config
 * git config user.name "User Name"
-* git config user.email "user_email"
+* git config user.email "user_email@email.com"
 * git config color.ui true
 * git config core.ignorecase false
 * git config merge.ff no
 * git config merge.commit no
 * git config pull.ff yes
-
-## Pre-commit
-* run `lint`, `stylint`, `test` tasks
-* Commit msg should match: <type>: <subject>
-
-> feat: some feature msg
 
 ## Commit Validation Message
 * feat - A new feature
@@ -95,6 +89,9 @@ $ yarn install
 * merge - A merge some changes
 * rebase - A merge some changes
 * cherry-pick -  A cherry-pick some changes
+
+> Commit msg should match: <type>: <subject>
+> example: docs: some docs msg
 
 <details>
 ```sh
