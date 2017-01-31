@@ -23,6 +23,7 @@ The provided boilerplate is powered by the following technology stack:
 - [x] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs. The flow type annotations get ripped out of the source by the webpack build step. You have no obligation to use flow within your code and can even uninstall the dependency (`flow-bin`) without breaking the project.
 - [x] [PostCSS](http://postcss.org/) — ecosystem of custom plugins like [Autoprefixer](https://github.com/postcss/autoprefixer) and tools aimed at transforming extended syntaxes and features into modern, browser-friendly CSS
 - [x] [CSS Modules](https://github.com/css-modules/css-modules) — guarantee that all the styles for a single component, designed to fix the problem of the global scope in CSS
+- [ ] [stylelint](https://github.com/stylelint/stylelint) - A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.
 - [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) & [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype) — additional React/Flow type specific linting rules for ESLint
 - [x] [Sass](http://sass-lang.com/) — compiler of CSS styles with variables, mixins, and more
 - [ ] [Mocha](https://mochajs.org/) — well-known and flexible test framework that you can use to run your JavaScript tests on the server or in the browser
@@ -35,7 +36,7 @@ The provided boilerplate is powered by the following technology stack:
 
 ### Prerequisites
 
-Support for Node.js > 5
+Support for Node.js >= 7.4.0
 
 ### Installation
 
@@ -80,7 +81,7 @@ $ yarn install
 
 > feat: some feature msg
 
-## Commit Validation [Types](http://npm.im/commitizen)
+## Commit Validation Message
 * feat - A new feature
 * fix - A bug fix
 * docs - Documentation only changes
@@ -90,11 +91,33 @@ $ yarn install
 * test - Adding missing tests
 * build - Changes to the build process or auxiliary tools and libraries such as documentation generation
 * revert - A revert some changes 
+* chore - something else
 * merge - A merge some changes
 * rebase - A merge some changes
 * cherry-pick -  A cherry-pick some changes
 
+<details>
+```sh
+{
+  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "chore", "revert", "merge", "rebase", "cherry-pick"],
+  "scope": {
+    required: false, // default,
+    allowed: ['button', 'card'], // default is '*' for anything,
+    validate: false, // default,
+    multiple: false // default
+  },
+  "warnOnFail": false, // default
+  "maxSubjectLength": 100, // default
+  "subjectPattern": ".+", // default
+  "subjectPatternErrorMsg": "subject does not match subject pattern!", // default
+  "helpMessage": "", // default
+  "autoFix": false // default
+}
+```
+</details>
+
 ## Style Guide
+Coming soon
 
 ## Debugging
 
@@ -132,7 +155,7 @@ The approach above supports hot reloading, which is great for development. Howev
 
 ## TODO
 
-- [ ] Test
+- [ ] MOCKS
  
 ## Author
 * [Sarhan Azizov](https://github.com/Jayser/)
@@ -145,8 +168,8 @@ MIT - do anything with the code, but don't blame me if it does not work.
 
 
 Will be remove
-https://github.com/nicksp/redux-webpack-es6-boilerplate
-https://github.com/Stanko/react-redux-webpack2-boilerplate
-https://github.com/sunstorymvp/playground
-https://github.com/Jayser/angularjs
-https://github.com/Jayser/reactjs-tz
+* https://github.com/nicksp/redux-webpack-es6-boilerplate
+* https://github.com/Stanko/react-redux-webpack2-boilerplate
+* https://github.com/sunstorymvp/playground
+* https://github.com/Jayser/angularjs
+* https://github.com/Jayser/reactjs-tz
