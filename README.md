@@ -18,6 +18,7 @@ The provided boilerplate is powered by the following technology stack:
 - [x] [React Router v3](https://github.com/reactjs/react-router/blob/next/CHANGES.md) — to allow [dynamic routing](https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md)
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux) — simple bindings to keep React Router and Redux in sync
 - [ ] [Reselect](https://github.com/reactjs/reselect) — provides a way to access Redux state in components and build composable selectors that are automatically memoized
+- [x] [autobind-decorator](https://github.com/andreypopp/autobind-decorator) - Decorator to automatically bind methods to class instances
 - [x] [Redux DevTools](https://github.com/gaearon/redux-devtools) — a live-editing environment for your Redux apps (and as a [browser extension](https://github.com/zalmoxisus/redux-devtools-extension))
 - [x] [ESLint](http://eslint.org/docs/user-guide/configuring) — reporter for syntax and style issues
 - [x] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs. The flow type annotations get ripped out of the source by the webpack build step. You have no obligation to use flow within your code and can even uninstall the dependency (`flow-bin`) without breaking the project.
@@ -26,6 +27,8 @@ The provided boilerplate is powered by the following technology stack:
 - [ ] [stylelint](https://github.com/stylelint/stylelint) - A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.
 - [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) & [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype) — additional React/Flow type specific linting rules for ESLint
 - [x] [Sass](http://sass-lang.com/) — compiler of CSS styles with variables, mixins, and more
+- [x] [react-bootstrap](https://react-bootstrap.github.io/) - React-Bootstrap is a library of reusable front-end components.
+- [x] [bootstrap-sass](https://github.com/twbs/bootstrap-sass) - Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.
 - [ ] [Mocha](https://mochajs.org/) — well-known and flexible test framework that you can use to run your JavaScript tests on the server or in the browser
 - [ ] [Enzyme](http://airbnb.io/enzyme/) — makes unit testing React components an absolute pleasure
 - [ ] [Chai](http://chaijs.com/) — BDD assertion library that works along with `Mocha`
