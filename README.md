@@ -110,10 +110,6 @@ $ yarn install
 ```
 </details>
 
-### Example
-- Commit msg should match: "<type>: <subject>"
-- example: "docs: some docs msg"
-
 ## Style Guide
 Coming soon
 
