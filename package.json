@@ -10,7 +10,7 @@
   "scripts": {
     "prestart": "npm run clean",
     "start": "cross-env NODE_ENV=development PORT=8000 node dev-server.js",
-    "pre-commit": "npm run lint",
+    "precommit": "npm run lint",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "./node_modules/.bin/eslint src",
     "lint:stylelint": "./node_modules/.bin/stylelint src/**/*.scss",
