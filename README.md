@@ -155,8 +155,6 @@ The approach above supports hot reloading, which is great for development. Howev
 - MOCKS
 - flow
 - CALL API,
-- style lint
-- pre commit(test) 
  
 ## Author
 * [Sarhan Azizov](https://github.com/Jayser/)
