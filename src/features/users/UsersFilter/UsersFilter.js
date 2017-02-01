@@ -2,6 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
 
 export default class UsersFilter extends Component {
+    static propTypes = {
+        handleClear: PropTypes.func.isRequired,
+        handleSearch: PropTypes.func.isRequired
+    };
+
     handleSearch(e) {
         e.preventDefault();
 
@@ -25,7 +30,7 @@ export default class UsersFilter extends Component {
         return (
             <Form inline onSubmit={ (e) => this.handleSearch(e) }>
                 <FormControl
-                    inputRef={ ref => { this.searchField = ref; } }
+                    inputRef={ (ref) => { this.searchField = ref; } }
                     componentClass="select"
                     placeholder="Select column by sort">
                         <option value="firstName">First Name</option>
@@ -35,12 +40,12 @@ export default class UsersFilter extends Component {
                 </FormControl>
                 {/* TODO: it's should be made as style */}
                 {' '}
-                <FormControl inputRef={ref => { this.searchQuery = ref; } } type="text" placeholder="Search" />
+                <FormControl inputRef={ (ref) => { this.searchQuery = ref; } } type="text" placeholder="Search" />
                 {' '}
                 <Button type="reset" onClick={ () => this.handleClear() }>X</Button>
                 {' '}
                 <Button bsStyle='primary' type="submit">Search</Button>
             </Form>
-        )
+        );
     }
 }

@@ -3,8 +3,8 @@ import { Button } from 'react-bootstrap';
 
 export default class UsersListItem extends Component {
     static propTypes = {
-        user: PropTypes.object.isRequired,
-        deleteUser: PropTypes.func
+        deleteUser: PropTypes.func,
+        user: PropTypes.object.isRequired
     };
 
     render() {
@@ -31,6 +31,6 @@ export default class UsersListItem extends Component {
                     <Button bsStyle="danger" onClick={ () => deleteUser(id) }>Delete</Button>
                 </td>
             </tr>
-        )
+        );
     }
 }

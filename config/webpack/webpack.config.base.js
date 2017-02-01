@@ -14,12 +14,12 @@ module.exports = {
     module: {
         rules: [
             // ESLint
-            /*{
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 enforce: 'pre',
                 use: 'eslint-loader',
-            },*/
+            },
             // JavaScript / ES6
             {
                 test: /\.js$/,

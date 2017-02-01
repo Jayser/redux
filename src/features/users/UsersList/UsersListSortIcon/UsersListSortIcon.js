@@ -3,14 +3,15 @@ import { Glyphicon } from 'react-bootstrap';
 
 export default class UsersListSortIcon extends Component {
     static propTypes = {
-        sort: PropTypes.object,
-        name: PropTypes.string
+        children: PropTypes.node,
+        name: PropTypes.string,
+        sort: PropTypes.object
     };
 
     renderIcon() {
         const { sort, name } = this.props;
         if (sort && sort.field === name) {
-            return sort.type === 'asc' ? <Glyphicon glyph='sort-by-alphabet' /> : <Glyphicon glyph='sort-by-alphabet-alt' />
+            return sort.type === 'asc' ? <Glyphicon glyph='sort-by-alphabet' /> : <Glyphicon glyph='sort-by-alphabet-alt' />;
         }
 
         return null;

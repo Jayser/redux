@@ -38,7 +38,7 @@ function searchUser(user, { field, query }) {
 
         isShow = isActive || isInactive;
     } else {
-        isShow = user[field].toLowerCase().includes(actionQuery)
+        isShow = user[field].toLowerCase().includes(actionQuery);
     }
 
     user.visibility = isShow;
@@ -63,9 +63,9 @@ function sortUser(state, { field }) {
         sort,
         data: state.data.sort((a, b) => {
             const sortType = sort.type === 'desc' ? a[field] > b[field] : a[field] < b[field];
-            return sortType ? -1 : 1
+            return sortType ? -1 : 1;
         })
-    }
+    };
 }
 
 export default (state = initialState, action) => {
@@ -73,7 +73,7 @@ export default (state = initialState, action) => {
         case types.CLEAR_SEARCH_FILTER:
             return {
                 ...state,
-                data: state.data.map(user => {
+                data: state.data.map((user) => {
                     user.visibility = true;
                     return user;
                 })
@@ -84,18 +84,18 @@ export default (state = initialState, action) => {
             return { ...state, activePage: Number(action.payload.query.page) || 1 };
 
         case types.DELETE_USER:
-            return { ...state, data: state.data.filter(user => user.id !== action.id) };
+            return { ...state, data: state.data.filter((user) => user.id !== action.id) };
 
         case types.CHANGE_PAGE:
             return { ...state, activePage: action.page };
 
         case types.SEARCH_USER:
-            return { ...state, data: state.data.map(user => searchUser(user, action)) };
+            return { ...state, data: state.data.map((user) => searchUser(user, action)) };
 
         case types.SORT_USER:
             return sortUser(state, action);
 
         default:
-            return state
+            return state;
     }
-}
+};

@@ -9,11 +9,11 @@ import './UserList.scss';
 
 export default class UsersList extends Component {
     static propTypes = {
+        changeRouteState: PropTypes.func.isRequired,
         className: PropTypes.string,
-        sort: PropTypes.object,
-        users: PropTypes.array.isRequired,
         deleteUser: PropTypes.func.isRequired,
-        changeRouteState: PropTypes.func.isRequired
+        sort: PropTypes.object,
+        users: PropTypes.array.isRequired
     };
 
     renderUsers() {
@@ -23,7 +23,7 @@ export default class UsersList extends Component {
             return null;
         }
 
-        return users.map(user => (
+        return users.map((user) => (
             <UsersListItem key={ user.id } user={ { ...user } } deleteUser={ deleteUser } />
         ));
     }
@@ -37,22 +37,22 @@ export default class UsersList extends Component {
         const { className, sort, changeRouteState } = this.props;
 
         return (
-            <Table className={className } striped bordered condensed hover>
+            <Table className={ className } striped bordered condensed hover>
                 <thead>
                     <tr>
-                        <th className={'header'} onClick={ () => changeRouteState({ sort: firstName }) }>
+                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: firstName }) }>
                             <UsersListSortIcon sort={ sort } name={ firstName }>First Name</UsersListSortIcon>
                         </th>
-                        <th className={'header'} onClick={ () => changeRouteState({ sort: lastName }) }>
+                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: lastName }) }>
                             <UsersListSortIcon sort={ sort } name={ lastName }>Last Name</UsersListSortIcon>
                         </th>
-                        <th className={'header'} onClick={ () => changeRouteState({ sort: email }) }>
+                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: email }) }>
                             <UsersListSortIcon sort={ sort } name={ email }>Email</UsersListSortIcon>
                         </th>
-                        <th className={'header'} onClick={ () => changeRouteState({ sort: status }) }>
+                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: status }) }>
                             <UsersListSortIcon sort={ sort } name={ status }>Status</UsersListSortIcon>
                         </th>
-                        <th className={'header'}> Actions </th>
+                        <th className={ 'header' }> Actions </th>
                     </tr>
                 </thead>
                 <tbody>

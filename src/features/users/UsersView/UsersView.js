@@ -17,8 +17,8 @@ const USERS_PER_PAGE = 5;
 
 class UsersView extends Component {
     static propTypes = {
-        users: PropTypes.object.isRequired,
-        actions: PropTypes.object.isRequired
+        actions: PropTypes.object.isRequired,
+        users: PropTypes.object.isRequired
     };
 
     componentWillMount() {
@@ -97,7 +97,7 @@ class UsersView extends Component {
                     items={ count }
                     onSelect={ this.changeRouteState } />
             </section>
-        )
+        );
     }
 }
 
@@ -114,10 +114,10 @@ const mapStateToProps = ({ users }) => {
             data: visibilityUsers.slice(from, to),
             count: visibilityUsers.length
         }
-    }
+    };
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(UserActions, dispatch)
 });
 
