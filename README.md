@@ -89,8 +89,7 @@ $ yarn install
 * chore - Changes to build process
 
 <details>
-```sh
-{
+```sh{
   "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "chore", "revert"],
   "scope": {
     required: false,
@@ -104,14 +103,13 @@ $ yarn install
   "subjectPatternErrorMsg": "subject does not match subject pattern!",
   "helpMessage": "",
   "autoFix": false
-}
-```
+}```
 </details>
 
 ### Example
-* "docs: some docs msg"
-* "feat: some feat msg"
-* "build: some build msg"
+* `docs: some docs msg`
+* `feat: some feat msg`
+* `build: some build msg`
 
 ## Style Guide
 
