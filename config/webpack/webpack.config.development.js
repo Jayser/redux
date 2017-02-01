@@ -1,8 +1,8 @@
 // Child Webpack configuration extended by webpack.config.base
 
-const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const webpackConfigBase = require('./webpack.config.base');
 const config = require('../config.base');
@@ -28,5 +28,8 @@ module.exports = webpackMerge(webpackConfigBase, {
 
         new webpack.NamedModulesPlugin(),
         // prints more readable module names in the browser console on HMR updates
+
+        new StyleLintPlugin()
+        // enable watch style lint
     ]
 });

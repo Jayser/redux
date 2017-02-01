@@ -10,6 +10,10 @@
   "scripts": {
     "prestart": "npm run clean",
     "start": "cross-env NODE_ENV=development PORT=8000 node dev-server.js",
+    "pre-commit": "npm run lint",
+    "lint": "npm run lint:eslint && npm run lint:stylelint",
+    "lint:eslint": "./node_modules/.bin/eslint src",
+    "lint:stylelint": "./node_modules/.bin/stylelint src/**/*.scss",
     "typecheck": "flow",
     "clean": "rm -rf dist reports",
     "analyze": "mkdirp reports && webpack --json -profile > reports/webpack-stats.json"
@@ -50,6 +54,10 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
+    "stylelint": "^7.7.1",
+    "stylelint-config-css-modules": "^0.1.0",
+    "stylelint-config-standard": "^15.0.1",
+    "stylelint-webpack-plugin": "^0.5.1",
     "tcomb": "^3.2.16",
     "url-loader": "^0.5.7",
     "validate-commit-msg": "^2.11.1",
@@ -73,10 +81,7 @@
     "redux-thunk": "^2.2.0"
   },
   "config": {
-    "ghooks": {
-      "pre-commit": "",
-      "commit-msg": "validate-commit-msg"
-    }
+    "commit-msg": "validate-commit-msg"
   },
   "engines": {
     "node": ">=7.4.0"
