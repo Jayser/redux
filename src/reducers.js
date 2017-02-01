@@ -3,8 +3,8 @@ import { routerReducer } from 'react-router-redux';
 import users from './features/users/reducer';
 
 const rootReducer = combineReducers({
-    users,
-    routing: routerReducer
+  users,
+  routing: routerReducer
 });
 
 export default rootReducer;

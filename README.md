@@ -86,12 +86,7 @@ $ yarn install
 * refactor - A code change that neither fixes a bug or adds a feature
 * perf - A code change that improves performance
 * test - Adding missing tests
-* build - Changes to the build process or auxiliary tools and libraries such as documentation generation
-* revert - A revert some changes 
-* chore - something else
-* merge - A merge some changes
-* rebase - A merge some changes
-* cherry-pick - A cherry-pick some changes
+* chore - Changes to build process
 
 <details>
 ```sh
@@ -173,7 +168,8 @@ The approach above supports hot reloading, which is great for development. Howev
 MIT - do anything with the code, but don't blame me if it does not work.
 
 
-Will be remove
+## Kit
+* https://github.com/davezuko/react-redux-starter-kit
 * https://github.com/nicksp/redux-webpack-es6-boilerplate
 * https://github.com/Stanko/react-redux-webpack2-boilerplate
 * https://github.com/sunstorymvp/playground

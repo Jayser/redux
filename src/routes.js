@@ -5,8 +5,8 @@ import HomeScreen from './screens/HomeScreen';
 import UsersScreen from './screens/UsersScreen';
 
 export default (
-    <Route path="/">
-        <IndexRoute component={ HomeScreen }/>
-        <Route path="/users" component={ UsersScreen } />
-    </Route>
+  <Route path='/'>
+    <IndexRoute component={ HomeScreen } />
+    <Route path='/users' component={ UsersScreen } />
+  </Route>
 );

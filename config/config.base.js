@@ -32,6 +32,7 @@ module.exports = {
         },
         output: {
             publicPath,
+            path: normalize(`${root}/build`),
             filename: addHash('js/[name].bundle.js'),
             chunkFilename: addHash('js/[name].chunk.js', { chunkHash: true }),
         },

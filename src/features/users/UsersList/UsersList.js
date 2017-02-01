@@ -8,57 +8,57 @@ import UsersListSortIcon from './UsersListSortIcon';
 import './UserList.scss';
 
 export default class UsersList extends Component {
-    static propTypes = {
-        changeRouteState: PropTypes.func.isRequired,
-        className: PropTypes.string,
-        deleteUser: PropTypes.func.isRequired,
-        sort: PropTypes.object,
-        users: PropTypes.array.isRequired
-    };
+  static propTypes = {
+    changeRouteState: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    deleteUser: PropTypes.func.isRequired,
+    sort: PropTypes.object,
+    users: PropTypes.array.isRequired
+  };
 
-    renderUsers() {
-        const { users, deleteUser } = this.props;
+  renderUsers() {
+    const { users, deleteUser } = this.props;
 
-        if (!users.length) {
-            return null;
-        }
-
-        return users.map((user) => (
-            <UsersListItem key={ user.id } user={ { ...user } } deleteUser={ deleteUser } />
-        ));
+    if (!users.length) {
+      return null;
     }
 
-    render() {
-        const firstName = 'firstName';
-        const lastName = 'lastName';
-        const email = 'email';
-        const status = 'status';
+    return users.map((user) => (
+      <UsersListItem key={ user.id } user={ { ...user } } deleteUser={ deleteUser } />
+    ));
+  }
 
-        const { className, sort, changeRouteState } = this.props;
+  render() {
+    const firstName = 'firstName';
+    const lastName = 'lastName';
+    const email = 'email';
+    const status = 'status';
 
-        return (
-            <Table className={ className } striped bordered condensed hover>
-                <thead>
-                    <tr>
-                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: firstName }) }>
-                            <UsersListSortIcon sort={ sort } name={ firstName }>First Name</UsersListSortIcon>
-                        </th>
-                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: lastName }) }>
-                            <UsersListSortIcon sort={ sort } name={ lastName }>Last Name</UsersListSortIcon>
-                        </th>
-                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: email }) }>
-                            <UsersListSortIcon sort={ sort } name={ email }>Email</UsersListSortIcon>
-                        </th>
-                        <th className={ 'header' } onClick={ () => changeRouteState({ sort: status }) }>
-                            <UsersListSortIcon sort={ sort } name={ status }>Status</UsersListSortIcon>
-                        </th>
-                        <th className={ 'header' }> Actions </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { this.renderUsers() }
-                </tbody>
-            </Table>
-        );
-    }
+    const { className, sort, changeRouteState } = this.props;
+
+    return (
+      <Table className={ className } striped bordered condensed hover>
+        <thead>
+          <tr>
+            <th className={ 'header' } onClick={ () => changeRouteState({ sort: firstName }) }>
+              <UsersListSortIcon sort={ sort } name={ firstName }>First Name</UsersListSortIcon>
+            </th>
+            <th className={ 'header' } onClick={ () => changeRouteState({ sort: lastName }) }>
+              <UsersListSortIcon sort={ sort } name={ lastName }>Last Name</UsersListSortIcon>
+            </th>
+            <th className={ 'header' } onClick={ () => changeRouteState({ sort: email }) }>
+              <UsersListSortIcon sort={ sort } name={ email }>Email</UsersListSortIcon>
+            </th>
+            <th className={ 'header' } onClick={ () => changeRouteState({ sort: status }) }>
+              <UsersListSortIcon sort={ sort } name={ status }>Status</UsersListSortIcon>
+            </th>
+            <th className={ 'header' }> Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          { this.renderUsers() }
+        </tbody>
+      </Table>
+    );
+  }
 }

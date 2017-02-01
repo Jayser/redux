@@ -10,13 +10,14 @@
   "scripts": {
     "prestart": "npm run clean",
     "start": "cross-env NODE_ENV=development PORT=8000 node dev-server.js",
-    "precommit": "npm run lint",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "./node_modules/.bin/eslint src",
     "lint:stylelint": "./node_modules/.bin/stylelint src/**/*.scss",
     "typecheck": "flow",
     "clean": "rm -rf dist reports",
-    "analyze": "mkdirp reports && webpack --json -profile > reports/webpack-stats.json"
+    "analyze": "mkdirp reports && webpack --json -profile > reports/webpack-stats.json",
+    "precommit": "npm run lint",
+    "commitmsg": "validate-commit-msg"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.0",
@@ -35,9 +36,14 @@
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-config-standard-react": "^4.2.0",
     "eslint-loader": "^1.6.1",
+    "eslint-plugin-babel": "^4.0.1",
     "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-standard": "^2.0.1",
     "file-loader": "^0.10.0",
     "flow-bin": "^0.38.0",
     "html-webpack-plugin": "^2.28.0",
@@ -79,9 +85,6 @@
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
-  },
-  "config": {
-    "commit-msg": "validate-commit-msg"
   },
   "engines": {
     "node": ">=7.4.0"
