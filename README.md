@@ -24,8 +24,7 @@ The provided boilerplate is powered by the following technology stack:
 - [x] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs. The flow type annotations get ripped out of the source by the webpack build step. You have no obligation to use flow within your code and can even uninstall the dependency (`flow-bin`) without breaking the project.
 - [x] [PostCSS](http://postcss.org/) — ecosystem of custom plugins like [Autoprefixer](https://github.com/postcss/autoprefixer) and tools aimed at transforming extended syntaxes and features into modern, browser-friendly CSS
 - [x] [CSS Modules](https://github.com/css-modules/css-modules) — guarantee that all the styles for a single component, designed to fix the problem of the global scope in CSS
-- [ ] [stylelint](https://github.com/stylelint/stylelint) - A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.
-- [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) & [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype) — additional React/Flow type specific linting rules for ESLint
+- [x] [stylelint](https://github.com/stylelint/stylelint) - A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.
 - [x] [Sass](http://sass-lang.com/) — compiler of CSS styles with variables, mixins, and more
 - [x] [react-bootstrap](https://react-bootstrap.github.io/) - React-Bootstrap is a library of reusable front-end components.
 - [x] [bootstrap-sass](https://github.com/twbs/bootstrap-sass) - Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.
@@ -60,8 +59,9 @@ $ yarn install
     * Point your browser to `http://localhost:8005/`, mocks all http request according to `app/data/mock`
     
 * Static analyzes
-    * `npm run stylint` This will check stylesheets on defects      
-    * `npm run lint` This will check javascript on defects
+    * `npm run lnt:stylint` This will check stylesheets on defects      
+    * `npm run lint:eslint` This will check javascript on defects
+    * `npm run lint` This will check javascript & stylesheets on defects
     * `npm run analyze`
         * This will create `reports/webpack-stats.json` file for [analyse](https://webpack.github.io/analyse/) webpack service
 
@@ -91,19 +91,19 @@ $ yarn install
 <details>
 ```sh
 {
-  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "chore", "revert", "merge", "rebase", "cherry-pick"],
+  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "chore", "revert"],
   "scope": {
-    required: false, // default,
-    allowed: ['button', 'card'], // default is '*' for anything,
-    validate: false, // default,
-    multiple: false // default
+    required: false,
+    allowed: ['button', 'card'],
+    validate: false,
+    multiple: false
   },
-  "warnOnFail": false, // default
-  "maxSubjectLength": 100, // default
-  "subjectPattern": ".+", // default
-  "subjectPatternErrorMsg": "subject does not match subject pattern!", // default
-  "helpMessage": "", // default
-  "autoFix": false // default
+  "warnOnFail": false,
+  "maxSubjectLength": 100,
+  "subjectPattern": ".+",
+  "subjectPatternErrorMsg": "subject does not match subject pattern!",
+  "helpMessage": "",
+  "autoFix": false
 }
 ```
 </details>
@@ -114,7 +114,6 @@ $ yarn install
 * "build: some build msg"
 
 ## Style Guide
-* [git-flow](https://github.com/petervanderdoes/gitflow-avh)
 
 ## Debugging
 
