@@ -151,9 +151,9 @@ The approach above supports hot reloading, which is great for development. Howev
 
 ## TODO
 
+- Rest API,
+- FLOW
 - MOCKS
-- flow
-- CALL API,
  
 ## Author
 * [Sarhan Azizov](https://github.com/Jayser/)
