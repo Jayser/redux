@@ -1,27 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { Pagination } from 'react-bootstrap';
 
-export default class UsersPagination extends Component {
+export default class extends Component {
   static propTypes = {
     activePage: PropTypes.number.isRequired,
     items: PropTypes.number.isRequired,
     onSelect: PropTypes.func.isRequired,
-    perPage: PropTypes.number
+    onPage: PropTypes.number
   };
 
   static defaultProps = {
-    perPage: 5
+    onPage: 5
   };
 
   render() {
     const {
       activePage,
       items,
-      perPage,
+      onPage,
       onSelect
     } = this.props;
 
-    const itemsPerPage = Math.ceil(items / perPage);
+    const itemsPerPage = Math.ceil(items / onPage);
 
     return (
       <section className='text-center'>

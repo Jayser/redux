@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Glyphicon } from 'react-bootstrap';
 
-export default class UsersListSortIcon extends Component {
+export default class extends Component {
   static propTypes = {
     children: PropTypes.node,
     name: PropTypes.string,

@@ -1,20 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import autobind from 'autobind-decorator';
+import CSSModules from 'react-css-modules';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-
 import * as UserActions from '../actions';
 
 import UsersList from '../UsersList';
 import UsersFilter from '../UsersFilter';
 import UsersPagination from '../UsersPagination';
-
-// TODO: Should be change to 'CSS module' way
-import './UsersView.scss';
+import styles from './UsersView.scss';
 
 const USERS_PER_PAGE = 5;
 
+@CSSModules(styles)
 class UsersView extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
@@ -36,7 +35,7 @@ class UsersView extends Component {
 
     if (page) {
       path.query.page = page;
-      this.props.actions.userPage(Number(page));
+      this.props.actions.changePage(Number(page));
     }
 
     if (sort) {
@@ -87,7 +86,7 @@ class UsersView extends Component {
           handleSearch={ this.handleFilterSearch }
           handleClear={ this.handleFilterClear } />
         <UsersList
-          className='users-list'
+          styleName='users-list'
           users={ data }
           sort={ sort }
           changeRouteState={ this.changeRouteState }

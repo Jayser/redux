@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Button } from 'react-bootstrap';
 
-export default class UsersListItem extends Component {
+export default class extends Component {
   static propTypes = {
     deleteUser: PropTypes.func,
     user: PropTypes.object.isRequired

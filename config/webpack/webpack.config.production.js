@@ -7,10 +7,10 @@ const webpackConfigBase = require('./webpack.config.base');
 const config = require('../config.base');
 
 module.exports = webpackMerge(webpackConfigBase, {
-    module: {
-        rules: []
-    },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin(config.uglifyJsPlugin)
-    ]
+  module: {
+    rules: []
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(config.uglifyJsPlugin)
+  ]
 });

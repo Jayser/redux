@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
 
-export default class UsersFilter extends Component {
+export default class extends Component {
   static propTypes = {
     handleClear: PropTypes.func.isRequired,
     handleSearch: PropTypes.func.isRequired
@@ -30,9 +30,7 @@ export default class UsersFilter extends Component {
     return (
       <Form inline onSubmit={ (e) => this.handleSearch(e) }>
         <FormControl
-          inputRef={ (ref) => {
-            this.searchField = ref;
-          } }
+          inputRef={ (ref) => { this.searchField = ref; } }
           componentClass='select'
           placeholder='Select column by sort'>
           <option value='firstName'>First Name</option>
