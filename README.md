@@ -154,6 +154,7 @@ The approach above supports hot reloading, which is great for development. Howev
 - Rest API,
 - FLOW
 - MOCKS
+- Test
  
 ## Author
 * [Sarhan Azizov](https://github.com/Jayser/)
