@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router';
 
-import HomeScreen from './screens/HomeScreen';
-import UsersScreen from './screens/UsersScreen';
+import NotFound from './features/NotFound';
+import App from './features/App';
+import ContactsView from './features/contacts/ContactsView';
 
 export default (
-  <Route path='/'>
-    <IndexRoute component={ HomeScreen } />
-    <Route path='/users' component={ UsersScreen } />
+  <Route path='/' component={ App }>
+    { ContactsView() }
+    <Route path='*' component={ NotFound } />
   </Route>
 );

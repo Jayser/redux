@@ -1,10 +1,10 @@
-const { join } = require('path');
 const url = require('url');
 const http = require('http');
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const proxy = require("http-proxy").createProxyServer();
 
 const webpackConfig = require('./config/webpack/webpack.config.development');
 const config = require('./config/config.base');
@@ -20,6 +20,11 @@ function log() {
 app.use(webpackDevMiddleware(compiler, config.devServer));
 
 app.use(webpackHotMiddleware(compiler));
+
+app.use("/api/*", function(req, res) {
+  req.url = req.baseUrl;
+  proxy.web(req, res, config.proxy);
+});
 
 // Important part. Send down index.html for all requests
 app.use('*', (req, res) => {
@@ -39,5 +44,5 @@ app.listen(config.env.PORT, config.env.HOST, (err) => {
         return;
     }
 
-    log('App is listening at http://%s:%s, NODE_ENV:%s', config.env.HOST, config.env.PORT, config.env.NODE_ENV);
+    log('App is listening at http://%s:%s, (%s)', config.env.HOST, config.env.PORT, config.env.NODE_ENV);
 });

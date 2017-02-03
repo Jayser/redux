@@ -1,21 +1,31 @@
 import React, { PropTypes } from 'react';
-import { Router } from 'react-router';
-import { Provider } from 'react-redux';
-import DevTools from '../../DevTools';
+import { Link } from 'react-router';
 
-const App = ({ store, routes, history }) => (
-  <Provider store={ store }>
+function App({ children }) {
+  return (
     <div>
-      <Router history={ history } routes={ routes } />
-      { __PROD__ ? null : <DevTools /> }
+      <header>
+        { '' }
+      </header>
+      <main>
+        {
+          children ? children : (
+            <div>
+              <h1>Home page</h1>
+              <Link to='contacts'>Contacts</Link>
+            </div>
+          )
+        }
+      </main>
+      <footer>
+        { '' }
+      </footer>
     </div>
-  </Provider>
-);
+  )
+}
 
 App.propTypes = {
-  store: PropTypes.object.isRequired,
-  routes: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  children: PropTypes.node
 };
 
 export default App;

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default () => (
   <main>
-    <h1>Home page</h1>
-    <Link to='/users'>Users page</Link>
+    <h1>Page Not Found</h1>
+    <Link to='/'>Home page</Link>
   </main>
 );

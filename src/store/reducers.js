@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import users from '../features/users/reducer';
+import { reducer as formReducer } from 'redux-form';
+import contacts from '../features/contacts/widgets';
 
 const rootReducer = combineReducers({
-  users,
+  contacts,
+  form: formReducer,
   routing: routerReducer
 });
 

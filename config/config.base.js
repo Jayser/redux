@@ -13,6 +13,7 @@ const ENV = {
   __PROD__: NODE_ENV === 'production',
   __COVERAGE__: NODE_ENV === 'coverage',
   __TEST__: NODE_ENV === 'test',
+  __ENV__: JSON.stringify(process.env.NODE_ENV)
 };
 
 const publicPath = ENV.__PROD__ ? './' : `http://${ HOST }:${ PORT }/`;
@@ -130,8 +131,9 @@ module.exports = {
       chunks: false,
       errorDetails: true,
       colors: true
-    }
+    },
   },
   devtool: ENV.__PROD__ ? 'eval' : 'source-map',
+  proxy: !ENV.__PROD__ ? { 'target': 'http://localhost:4040' } : {},
   env: { HOST, PORT, NODE_ENV }
 };

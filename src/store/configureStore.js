@@ -1,9 +1,11 @@
 import { applyMiddleware, createStore, compose } from 'redux';
+import { apiMiddleware } from 'redux-api-middleware';
 import thunk from 'redux-thunk';
 import { persistState } from 'redux-devtools';
 import rootReducer from './reducers';
 import DevTools from '../DevTools';
 
+const createStoreWithMiddleware = applyMiddleware(apiMiddleware)(createStore);
 const middleware = [thunk];
 
 const enhancers = [];
@@ -20,7 +22,7 @@ if (__DEV__) {
 }
 
 export default (initialState = {}) => {
-  const store = createStore(rootReducer, initialState, compose(
+  const store = createStoreWithMiddleware(rootReducer, initialState, compose(
       ...enhancers,
       applyMiddleware(...middleware)
     )
@@ -34,4 +36,3 @@ export default (initialState = {}) => {
 
   return store;
 }
-
