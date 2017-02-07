@@ -21,9 +21,13 @@ app.use(webpackDevMiddleware(compiler, config.devServer));
 
 app.use(webpackHotMiddleware(compiler));
 
-app.use("/api/*", function(req, res) {
+app.use("/api/*", (req, res) => {
   req.url = req.baseUrl;
   proxy.web(req, res, config.proxy);
+  proxy.on('error', (err, req, res) => {
+    console.error(err);
+    res.send(err);
+  });
 });
 
 // Important part. Send down index.html for all requests

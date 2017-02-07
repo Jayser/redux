@@ -60,7 +60,7 @@ module.exports = {
           importLoaders: 1,
           minimize: ENV.__PROD__,
           sourceMap: !ENV.__PROD__,
-          localIdentName: ENV.__PROD__ ? '[name]__[local]' : '[name]__[local]___[hash:base64:5]',
+          localIdentName: ENV.__PROD__ ? '[name]__[local]__[hash:base64:5]' : '[name]__[local]',
           modules: true
         }
       },

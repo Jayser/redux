@@ -3,6 +3,7 @@ import { Table } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
 import autobind from 'autobind-decorator';
 
+import ContactsTheadItems from '../ContactsTheadItems';
 import ContactsListItems from '../ContactsListItems';
 import ContactsPagination from '../ContactsListPagination';
 import ContactsListAddButton from '../ContactsListAddButton';
@@ -34,12 +35,7 @@ export default class extends Component {
         <div>
           <Table styleName='table' striped bordered condensed hover>
             <thead>
-              <tr>
-                <th styleName='table-header'>First name</th>
-                <th styleName='table-header'>Last name</th>
-                <th styleName='table-header'>Phone number</th>
-                <th styleName='table-header'>Actions</th>
-              </tr>
+              <ContactsTheadItems />
             </thead>
             <ContactsListItems contacts={ data } handleRemoveContact={ removeContact } />
           </Table>
