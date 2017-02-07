@@ -109,7 +109,7 @@ export default function (state = initialState, action = {}) {
     case READ_ONE:
       return {
         ...state,
-        data: {},
+        data: [],
         readOneLoading: true
       };
     case READ_ONE_SUCCESS:
@@ -117,7 +117,7 @@ export default function (state = initialState, action = {}) {
         ...state,
         readOneLoading: false,
         readOneLoaded: true,
-        data: action.payload
+        data: [action.payload]
       };
     case READ_ONE_FAIL:
       return {

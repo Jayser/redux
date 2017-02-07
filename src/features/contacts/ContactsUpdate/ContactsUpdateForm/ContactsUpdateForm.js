@@ -31,33 +31,32 @@ export default class extends Component {
       });
   }
 
-  shouldComponentUpdate({ contacts: { data, updateLoaded }, dirty }) {
-    // TODO: should be refactoring
-    let contact = data;
+  getContact(data) {
+    let editContact = data;
 
     if (data.length) {
-      contact = data.find((contact) => (contact._id === this.contactId));
-    } else {
-      contact = data;
+      editContact = data.find((contact) => (contact._id === this.contactId));
     }
 
-    if (!contact._id) {
+    return editContact;
+  }
+
+  componentWillReceiveProps({ contacts: { data, updateLoaded }, dirty }) {
+    this.editContact = this.getContact(data);
+
+    if (!this.editContact._id) {
       this.props.actions.readContact(this.contactId);
-      return false;
     }
 
     if(updateLoaded) {
       browserHistory.push('/contacts');
-      return false;
     }
 
-    if (!dirty) {
-      this.props.change('firstName', contact.firstName);
-      this.props.change('lastName', contact.lastName);
-      this.props.change('phoneNumber', contact.phoneNumber);
+    if (!dirty && this.editContact._id) {
+      this.props.change('firstName', this.editContact.firstName);
+      this.props.change('lastName', this.editContact.lastName);
+      this.props.change('phoneNumber', this.editContact.phoneNumber);
     }
-
-    return true;
   }
 
   errorMessage() {
