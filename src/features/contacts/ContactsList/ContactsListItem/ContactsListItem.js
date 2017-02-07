@@ -9,29 +9,28 @@ export default class extends Component {
     handleUpdateContact: PropTypes.func.isRequired
   };
 
+  renderButtons(handleRemoveContact, contactId) {
+    return (
+      <td className='text-center'>
+        <LinkContainer to={ { pathname: `/contacts/update-contact`, query: { contactId } } }>
+          <Button bsStyle='primary'>edit</Button>
+        </LinkContainer>
+        { ' ' }
+        <Button bsStyle='danger' onClick={ () => handleRemoveContact(contactId) }>delete</Button>
+      </td>
+    );
+  }
+
   render() {
-    const {
-      contact: {
-        _id,
-        firstName,
-        lastName,
-        phoneNumber,
-      },
-      handleRemoveContact,
-    } = this.props;
+    const { contact: { _id, firstName, lastName, phoneNumber }, handleRemoveContact } = this.props;
+    const buttons = this.renderButtons(handleRemoveContact, _id);
 
     return (
       <tr>
         <td>{ firstName }</td>
         <td>{ lastName }</td>
         <td>{ phoneNumber }</td>
-        <td className='text-center'>
-          <LinkContainer to={ { pathname: `/contacts/update-contact`, query: { contactId: _id } } }>
-            <Button bsStyle='primary'>edit</Button>
-          </LinkContainer>
-          { ' ' }
-          <Button bsStyle='danger' onClick={ () => handleRemoveContact(_id) }>delete</Button>
-        </td>
+        { buttons }
       </tr>
     );
   }

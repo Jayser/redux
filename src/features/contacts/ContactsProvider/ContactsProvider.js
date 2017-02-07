@@ -8,22 +8,24 @@ import * as widgetActions from '../widgets';
 
 const USERS_PER_PAGE = 5;
 
-@connect(
-  ({ contacts }) => {
-    const query = browserHistory.getCurrentLocation().query;
-    const activePage = Number(query.page || contacts.activePage);
-    const from =  (activePage - 1) * USERS_PER_PAGE;
-    const to = from + USERS_PER_PAGE;
+const getContacts = (contacts) => {
+  const query = browserHistory.getCurrentLocation().query;
+  const activePage = Number(query.page || contacts.activePage);
+  const from =  (activePage - 1) * USERS_PER_PAGE;
+  const to = from + USERS_PER_PAGE;
 
-    return {
-      contacts: {
-        ...contacts,
-        activePage,
-        count: contacts.data.length,
-        data: contacts.data.slice(from, to)
-      }
-    }
-  },
+  return {
+      ...contacts,
+      activePage,
+      count: contacts.data.length,
+      data: contacts.data.slice(from, to)
+  }
+};
+
+@connect(
+  ({ contacts }) => ({
+    contacts: getContacts(contacts)
+  }),
   (dispatch) => ({
     actions: bindActionCreators(widgetActions, dispatch)
   })

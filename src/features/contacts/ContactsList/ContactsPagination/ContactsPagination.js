@@ -14,13 +14,7 @@ export default class extends Component {
   };
 
   render() {
-    const {
-      activePage,
-      items,
-      onPage,
-      onSelect
-    } = this.props;
-
+    const { activePage, items, onPage, onSelect } = this.props;
     const itemsPerPage = Math.ceil(items / onPage);
 
     return (

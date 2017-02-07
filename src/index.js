@@ -18,7 +18,7 @@ ReactDOM.render(
   <Provider store={ store }>
     <div>
       <Router history={ history } routes={ routes } />
-      { __PROD__ ? null : <DevTools /> }
+      { __DEV__ ? <DevTools /> : null }
     </div>
   </Provider>,
   MOUNT_NODE

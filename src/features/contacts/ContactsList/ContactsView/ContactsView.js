@@ -27,16 +27,12 @@ export default class extends Component {
 
   renderContactColumn() {
     const {
-      contacts: {
-        data
-      },
+      contacts: { data },
       actions: {
         updateContact,
         removeContact
       }
     } = this.props;
-
-
 
     return data.map((contact) => (
       <ContactsListItem
@@ -62,12 +58,7 @@ export default class extends Component {
   }
 
   renderContactsList() {
-    const {
-      contacts: {
-        data,
-        readLoaded
-      }
-    } = this.props;
+    const { contacts: { data, readLoaded } } = this.props;
 
     if (!readLoaded || !data.length) {
       return <h2>Contacts List is empty</h2>

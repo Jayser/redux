@@ -31,138 +31,138 @@ const initialState = {
   data: []
 };
 
-export default function(state = initialState, action = {}) {
-    switch (action.type) {
-      // CREATE
-      case CREATE:
-        return {
-          ...state,
-          createLoading: true
-        };
-      case CREATE_SUCCESS:
-        return {
-          ...state,
-          createLoading: false,
-          createLoaded: true,
-          data: state.data.concat(action.payload)
-        };
-      case CREATE_FAIL:
-        return {
-          ...state,
-          createLoading: false,
-          createLoaded: false,
-          error: {
-            HTTPError: action.payload.message,
-            message: action.payload.response.message
-          }
-        };
+export default function (state = initialState, action = {}) {
+  switch (action.type) {
+    // CREATE
+    case CREATE:
+      return {
+        ...state,
+        createLoading: true
+      };
+    case CREATE_SUCCESS:
+      return {
+        ...state,
+        createLoading: false,
+        createLoaded: true,
+        data: state.data.concat(action.payload)
+      };
+    case CREATE_FAIL:
+      return {
+        ...state,
+        createLoading: false,
+        createLoaded: false,
+        error: {
+          HTTPError: action.payload.message,
+          message: action.payload.response.message
+        }
+      };
 
-      // READ
-      case READ:
-        return {
-          ...state,
-          readLoading: true
-        };
-      case READ_SUCCESS:
-        return {
-          ...state,
-          readLoading: false,
-          readLoaded: true,
-          data: action.payload
-        };
-      case READ_FAIL:
-        return {
-          ...state,
-          readLoading: false,
-          readLoaded: false,
-          error: {
-            HTTPError: action.payload.message,
-            message: action.payload.response.message
-          }
-        };
+    // READ
+    case READ:
+      return {
+        ...state,
+        readLoading: true
+      };
+    case READ_SUCCESS:
+      return {
+        ...state,
+        readLoading: false,
+        readLoaded: true,
+        data: action.payload
+      };
+    case READ_FAIL:
+      return {
+        ...state,
+        readLoading: false,
+        readLoaded: false,
+        error: {
+          HTTPError: action.payload.message,
+          message: action.payload.response.message
+        }
+      };
 
-      // UPDATE
-      case UPDATE:
-        return {
-          ...state,
-          updateLoading: true
-        };
-      case UPDATE_SUCCESS:
-        return {
-          ...state,
-          updateLoading: false,
-          updateLoaded: true,
-          data: action.payload.length ? action.payload : [action.payload]
-        };
-      case UPDATE_FAIL:
-        return {
-          ...state,
-          updateLoading: false,
-          updateLoaded: false,
-          error: {
-            HTTPError: action.payload.message,
-            message: action.payload.response.message
-          }
-        };
+    // UPDATE
+    case UPDATE:
+      return {
+        ...state,
+        updateLoading: true
+      };
+    case UPDATE_SUCCESS:
+      return {
+        ...state,
+        updateLoading: false,
+        updateLoaded: true,
+        data: action.payload.length ? action.payload : [action.payload]
+      };
+    case UPDATE_FAIL:
+      return {
+        ...state,
+        updateLoading: false,
+        updateLoaded: false,
+        error: {
+          HTTPError: action.payload.message,
+          message: action.payload.response.message
+        }
+      };
 
-      // READ ONE
-      case READ_ONE:
-        return {
-          ...state,
-          data: {},
-          readOneLoading: true
-        };
-      case READ_ONE_SUCCESS:
-        return {
-          ...state,
-          readOneLoading: false,
-          readOneLoaded: true,
-          data: action.payload
-        };
-      case READ_ONE_FAIL:
-        return {
-          ...state,
-          readOneLoading: false,
-          readOneLoaded: false,
-          error: {
-            HTTPError: action.payload.message,
-            message: action.payload.response.message
-          }
-        };
+    // READ ONE
+    case READ_ONE:
+      return {
+        ...state,
+        data: {},
+        readOneLoading: true
+      };
+    case READ_ONE_SUCCESS:
+      return {
+        ...state,
+        readOneLoading: false,
+        readOneLoaded: true,
+        data: action.payload
+      };
+    case READ_ONE_FAIL:
+      return {
+        ...state,
+        readOneLoading: false,
+        readOneLoaded: false,
+        error: {
+          HTTPError: action.payload.message,
+          message: action.payload.response.message
+        }
+      };
 
-      // REMOVE
-      case REMOVE:
-        return {
-          ...state,
-          removeLoading: true
-        };
-      case REMOVE_SUCCESS:
-        return {
-          ...state,
-          removeLoading: false,
-          removeLoaded: true,
-          data: state.data.filter((contact) => contact._id !== action.payload._id)
-        };
-      case REMOVE_FAIL:
-        return {
-          ...state,
-          removeLoading: false,
-          removeLoaded: false,
-          error: {
-            HTTPError: action.payload.message,
-            message: action.payload.response.message
-          }
-        };
+    // REMOVE
+    case REMOVE:
+      return {
+        ...state,
+        removeLoading: true
+      };
+    case REMOVE_SUCCESS:
+      return {
+        ...state,
+        removeLoading: false,
+        removeLoaded: true,
+        data: state.data.filter((contact) => contact._id !== action.payload._id)
+      };
+    case REMOVE_FAIL:
+      return {
+        ...state,
+        removeLoading: false,
+        removeLoaded: false,
+        error: {
+          HTTPError: action.payload.message,
+          message: action.payload.response.message
+        }
+      };
 
-      case CLEAR:
-        return {
-          ...initialState,
-          data: state.data
-        };
+    case CLEAR:
+      return {
+        ...initialState,
+        data: state.data
+      };
 
-      default:
-        return state;
-    }
+    default:
+      return state;
+  }
 }
 
 // Action Creators
@@ -221,5 +221,5 @@ export function updateContact(contactId, body) {
 }
 
 export function clearState() {
-    return { type: CLEAR };
-  }
+  return { type: CLEAR };
+}
