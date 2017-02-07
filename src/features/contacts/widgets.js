@@ -1,76 +1,225 @@
+import { CALL_API } from 'redux-api-middleware';
+
 import { formatUrl } from '../../utils';
 
 // Actions
-const LOAD = 'contacts/LOAD';
-const LOAD_SUCCESS = 'contacts/LOAD_SUCCESS';
-const LOAD_FAIL = 'contacts/LOAD_FAIL';
-
 const CREATE = 'contacts/CREATE';
-const UPDATE = 'contacts/UPDATE';
-const REMOVE = 'contacts/REMOVE';
+const CREATE_SUCCESS = 'contacts/CREATE_SUCCESS';
+const CREATE_FAIL = 'contacts/CREATE_FAIL';
 
-import { LOCATION_CHANGE } from 'react-router-redux';
-import { CALL_API } from 'redux-api-middleware';
+const READ = 'contacts/READ';
+const READ_SUCCESS = 'contacts/READ_SUCCESS';
+const READ_FAIL = 'contacts/READ_FAIL';
+
+const READ_ONE = 'contacts/READ_ONE';
+const READ_ONE_SUCCESS = 'contacts/READ_ONE_SUCCESS';
+const READ_ONE_FAIL = 'contacts/READ_ONE_FAIL';
+
+const REMOVE = 'contacts/REMOVE';
+const REMOVE_SUCCESS = 'contacts/REMOVE_SUCCESS';
+const REMOVE_FAIL = 'contacts/REMOVE_FAIL';
+
+const UPDATE = 'contacts/UPDATE';
+const UPDATE_SUCCESS = 'contacts/UPDATE_SUCCESS';
+const UPDATE_FAIL = 'contacts/UPDATE_FAIL';
+
+const CLEAR = 'contacts/CLEAR';
 
 // Reducer
 const initialState = {
-  loaded: false,
+  activePage: 1,
   data: []
 };
 
-export default function reducer(state = initialState, action = {}) {
-  switch (action.type) {
-    case LOAD:
-      return {
+export default function(state = initialState, action = {}) {
+    switch (action.type) {
+      // CREATE
+      case CREATE:
+        return {
           ...state,
-          loading: true
-      };
+          createLoading: true
+        };
+      case CREATE_SUCCESS:
+        return {
+          ...state,
+          createLoading: false,
+          createLoaded: true,
+          data: state.data.concat(action.payload)
+        };
+      case CREATE_FAIL:
+        return {
+          ...state,
+          createLoading: false,
+          createLoaded: false,
+          error: {
+            HTTPError: action.payload.message,
+            message: action.payload.response.message
+          }
+        };
 
-    case LOAD_SUCCESS:
-      return {
-        ...state,
-        loaded: true,
-        loading: false,
-        data: action.payload,
-        error: null
-      };
+      // READ
+      case READ:
+        return {
+          ...state,
+          readLoading: true
+        };
+      case READ_SUCCESS:
+        return {
+          ...state,
+          readLoading: false,
+          readLoaded: true,
+          data: action.payload
+        };
+      case READ_FAIL:
+        return {
+          ...state,
+          readLoading: false,
+          readLoaded: false,
+          error: {
+            HTTPError: action.payload.message,
+            message: action.payload.response.message
+          }
+        };
 
-    case LOAD_FAIL:
-      return {
-        ...state,
-        loading: false,
-        loaded: false,
-        data: null,
-        error: action.error
-      };
+      // UPDATE
+      case UPDATE:
+        return {
+          ...state,
+          updateLoading: true
+        };
+      case UPDATE_SUCCESS:
+        return {
+          ...state,
+          updateLoading: false,
+          updateLoaded: true,
+          data: action.payload.length ? action.payload : [action.payload]
+        };
+      case UPDATE_FAIL:
+        return {
+          ...state,
+          updateLoading: false,
+          updateLoaded: false,
+          error: {
+            HTTPError: action.payload.message,
+            message: action.payload.response.message
+          }
+        };
 
-    case LOCATION_CHANGE:
-      return { ...state, activePage: 1 };
+      // READ ONE
+      case READ_ONE:
+        return {
+          ...state,
+          data: {},
+          readOneLoading: true
+        };
+      case READ_ONE_SUCCESS:
+        return {
+          ...state,
+          readOneLoading: false,
+          readOneLoaded: true,
+          data: action.payload
+        };
+      case READ_ONE_FAIL:
+        return {
+          ...state,
+          readOneLoading: false,
+          readOneLoaded: false,
+          error: {
+            HTTPError: action.payload.message,
+            message: action.payload.response.message
+          }
+        };
 
-    default:
-      return state;
-  }
+      // REMOVE
+      case REMOVE:
+        return {
+          ...state,
+          removeLoading: true
+        };
+      case REMOVE_SUCCESS:
+        return {
+          ...state,
+          removeLoading: false,
+          removeLoaded: true,
+          data: state.data.filter((contact) => contact._id !== action.payload._id)
+        };
+      case REMOVE_FAIL:
+        return {
+          ...state,
+          removeLoading: false,
+          removeLoaded: false,
+          error: {
+            HTTPError: action.payload.message,
+            message: action.payload.response.message
+          }
+        };
+
+      case CLEAR:
+        return {
+          ...initialState,
+          data: state.data
+        };
+
+      default:
+        return state;
+    }
 }
 
 // Action Creators
-export const loadContacts = () => {
+export function createContact(body) {
+  return {
+    [CALL_API]: {
+      endpoint: formatUrl('/contacts'),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      types: [CREATE, CREATE_SUCCESS, CREATE_FAIL],
+      body: JSON.stringify(body)
+    }
+  };
+}
+
+export function readContacts() {
   return {
     [CALL_API]: {
       endpoint: formatUrl('/contacts'),
       method: 'GET',
-      types: [LOAD, LOAD_SUCCESS, LOAD_FAIL]
+      types: [READ, READ_SUCCESS, READ_FAIL]
     }
   };
-};
-
-export function createContact(widget) {
-  return { type: CREATE, widget };
 }
 
-export function updateContact(widget) {
-  return { type: UPDATE, widget };
+export function readContact(contactId) {
+  return {
+    [CALL_API]: {
+      endpoint: formatUrl(`/contacts/${ contactId }`),
+      method: 'GET',
+      types: [READ_ONE, READ_ONE_SUCCESS, READ_ONE_FAIL]
+    }
+  };
 }
 
-export function removeContact(widget) {
-  return { type: REMOVE, widget };
+export function removeContact(contactId) {
+  return {
+    [CALL_API]: {
+      endpoint: formatUrl(`/contacts/${ contactId }`),
+      method: 'DELETE',
+      types: [REMOVE, REMOVE_SUCCESS, REMOVE_FAIL]
+    }
+  };
 }
+
+export function updateContact(contactId, body) {
+  return {
+    [CALL_API]: {
+      endpoint: formatUrl(`/contacts/${ contactId }`),
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      types: [UPDATE, UPDATE_SUCCESS, UPDATE_FAIL],
+      body: JSON.stringify(body)
+    }
+  };
+}
+
+export function clearState() {
+    return { type: CLEAR };
+  }

@@ -10,8 +10,8 @@
   "scripts": {
     "prestart": "npm run clean",
     "start": "cross-env NODE_ENV=development PORT=8000 node dev-server.js",
-    "lint": "npm run lint:eslint && npm run lint:stylelint",
-    "lint:eslint": "./node_modules/.bin/eslint src",
+    "lint": "npm run lint:eslint & npm run lint:stylelint",
+    "lint:eslint": "./node_modules/.bin/eslint --cache src",
     "lint:stylelint": "./node_modules/.bin/stylelint src/**/*.scss",
     "typecheck": "flow",
     "clean": "rm -rf dist reports",

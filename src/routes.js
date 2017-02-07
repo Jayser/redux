@@ -3,11 +3,11 @@ import { Route } from 'react-router';
 
 import NotFound from './features/NotFound';
 import App from './features/App';
-import ContactsView from './features/contacts/ContactsView';
+import Contacts from './features/contacts';
 
 export default (
   <Route path='/' component={ App }>
-    { ContactsView() }
+    { Contacts() }
     <Route path='*' component={ NotFound } />
   </Route>
 );

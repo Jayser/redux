@@ -1,9 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Field } from 'redux-form';
 
-// TODO: Temporarily solution
-// should be import
-// import { Input, Select ... } from 'fileName';
 import Input from './Input';
 
 const componentsMap = {
@@ -12,19 +9,21 @@ const componentsMap = {
 
 export default class extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
     component: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired
   };
 
   render() {
-    const { name, component, type, label } = this.props;
+    const { name, component, type, label, placeholder } = this.props;
 
     const fieldProps = {
       name,
       type,
       label,
+      placeholder,
       component: componentsMap[component]
     };
 
