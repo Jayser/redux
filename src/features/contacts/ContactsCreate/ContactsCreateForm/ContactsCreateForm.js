@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import autobind from 'autobind-decorator';
 import { reduxForm, propTypes } from 'redux-form';
-import { withRouter } from 'react-router';
 
 import { FormField } from '../../../../shared/forms';
 import formValidation from '../../utils/formValidation';
 
-@withRouter
 @reduxForm({
   form: 'contacts/form/CREATE',
   validate: formValidation
@@ -15,19 +13,22 @@ export default class extends Component {
   static propTypes = {
     ...propTypes,
     actions: PropTypes.object.isRequired,
-    contacts: PropTypes.object.isRequired
+    contacts: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired
   };
 
   componentWillUnmount() {
     this.props.actions.clearState();
   }
 
-  shouldComponentUpdate({ contacts: { createLoaded } }) {
-    if (createLoaded) {
+  componentWillReceiveProps({ contacts: { create: { loaded } } }) {
+    if (loaded) {
       this.props.router.push('/contacts');
     }
+  }
 
-    return !createLoaded;
+  shouldComponentUpdate({ contacts: { create: { loaded } } }) {
+    return !loaded;
   }
 
   @autobind onSubmit(values) {
@@ -36,21 +37,6 @@ export default class extends Component {
         lastName: values.lastName,
         phoneNumber: values.phoneNumber
       });
-  }
-
-  errorMessage() {
-    const error = this.props.contacts.error;
-
-    if (error){
-      return (
-        <div>
-          <p>{ error.HTTPError }</p>
-          <p>{ error.message }</p>
-        </div>
-      )
-    }
-
-    return null;
   }
 
   render() {
@@ -78,7 +64,6 @@ export default class extends Component {
             component='input'
             label='Phone Number *'
             placeholder='input phone number' />
-          { this.errorMessage() }
           <div>
             <button type='submit' disabled={ submitting }>Create Contact</button>
             <button type='button' disabled={ pristine || submitting } onClick={ reset }>Clear</button>

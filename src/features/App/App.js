@@ -1,17 +1,14 @@
 import React, { PropTypes } from 'react';
+import Header from '../../shared/Header';
 
 function App({ children }) {
   return (
     <div>
-      <header>
-        { ' ' }
-      </header>
+      <Header />
       <main>
         { children }
       </main>
-      <footer>
-        { ' ' }
-      </footer>
+      <footer />
     </div>
   )
 }

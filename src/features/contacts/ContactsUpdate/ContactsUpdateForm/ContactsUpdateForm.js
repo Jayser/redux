@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import autobind from 'autobind-decorator';
 import { reduxForm, propTypes } from 'redux-form';
-import { browserHistory } from 'react-router';
 
 import { FormField } from '../../../../shared/forms';
 import formValidation from '../../utils/formValidation';
@@ -14,13 +13,12 @@ export default class extends Component {
   static propTypes = {
     ...propTypes,
     actions: PropTypes.object.isRequired,
-    contacts: PropTypes.object.isRequired
-  };
+    contacts: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired
+};
 
-  constructor(props){
-    super(props);
-
-    this.contactId = browserHistory.getCurrentLocation().query.contactId;
+  componentWillMount(){
+    this.contactId = this.props.router.getCurrentLocation().query.contactId;
   }
 
   @autobind onSubmit(values) {
@@ -31,47 +29,23 @@ export default class extends Component {
       });
   }
 
-  getContact(data) {
-    let editContact = data;
+  componentWillReceiveProps({ contacts: { read: { data }, update: { loaded } }, actions: { readContact }, dirty }) {
+    const editContact = data.find((contact) => (contact._id === this.contactId));
 
-    if (data.length) {
-      editContact = data.find((contact) => (contact._id === this.contactId));
+    if (!editContact) {
+      readContact(this.contactId);
+      return;
     }
 
-    return editContact;
-  }
-
-  componentWillReceiveProps({ contacts: { data, updateLoaded }, dirty }) {
-    this.editContact = this.getContact(data);
-
-    if (!this.editContact._id) {
-      this.props.actions.readContact(this.contactId);
+    if (!dirty && editContact._id) {
+      this.props.change('firstName', editContact.firstName);
+      this.props.change('lastName', editContact.lastName);
+      this.props.change('phoneNumber', editContact.phoneNumber);
     }
 
-    if(updateLoaded) {
-      browserHistory.push('/contacts');
+    if(loaded) {
+      this.props.router.push('/contacts');
     }
-
-    if (!dirty && this.editContact._id) {
-      this.props.change('firstName', this.editContact.firstName);
-      this.props.change('lastName', this.editContact.lastName);
-      this.props.change('phoneNumber', this.editContact.phoneNumber);
-    }
-  }
-
-  errorMessage() {
-    const error = this.props.contacts.error;
-
-    if (error){
-      return (
-        <div>
-          <p>{ error.HTTPError }</p>
-          <p>{ error.message }</p>
-        </div>
-      )
-    }
-
-    return null;
   }
 
   componentWillUnmount() {
@@ -103,7 +77,6 @@ export default class extends Component {
             component='input'
             label='Phone Number *'
             placeholder='input phone number' />
-          { this.errorMessage() }
           <div>
             <button type='submit' disabled={ submitting }>Edit Contact</button>
             <button type='button' disabled={ pristine || submitting } onClick={ reset }>Clear</button>
