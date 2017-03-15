@@ -166,6 +166,17 @@ The approach above supports hot reloading, which is great for development. Howev
 MIT - do anything with the code, but don't blame me if it does not work.
 
 
+## Editors
+
+### WebStorm
+- Install [WebStorm](https://www.jetbrains.com/webstorm/)
+- Configuration
+  - Choose **React JSX** in `Languages & Frameworks -> JavaScript -> JavaScript language version`
+  - Enable **ECMAScript 6** in `Languages & Frameworks -> JavaScript -> Libraries`
+  - Enable **Object literal braces** and **ES6 import/export braces** in `Editor -> Code style -> JavaScript -> Spaces -> Within`
+  - Disable **Missing required attribute** in `Editor -> Inspection -> HTML`. It disables warnings for Redux containers
+  - For **src** directory do `Mark Directory as -> Resource Root`. It enables autocomplete for imports like `packages/*`, `models/*`, etc.
+
 ## Kit
 * https://github.com/erikras/react-redux-universal-hot-example
 * https://github.com/davezuko/react-redux-starter-kit
